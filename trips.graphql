@@ -1,0 +1,30 @@
+query getAllTrips(
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+  $order: [TripDTOSortInput!]
+  $where: TripDTOFilterInput
+) {
+  trips(after: $after, before: $before, first: $first, last: $last, order: $order, where: $where) {
+    totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        tripID
+        serviceTypeID
+        portID
+        from
+        to
+        isBookedTrip
+      }
+    }
+  }
+}
+
